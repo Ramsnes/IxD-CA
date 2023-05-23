@@ -225,11 +225,17 @@ h2 {
 index.html
 --*/
 
+.welcome {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
 .threepics {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 80px 20px 0 20px;
+  margin: 30px 20px 0 20px;
   gap: 5%;
 }
 
@@ -248,7 +254,7 @@ index.html
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 30px auto auto auto;
+    margin: auto;
   }
 
   .threepics img {
@@ -262,8 +268,12 @@ index.html
     align-items: center;
   }
 
+  .welcome p {
+    font-size: 0.9em;
+  }
+
   p {
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
 
   h2 {
@@ -278,6 +288,10 @@ index.html
 
   .threepics img {
     width: 50%;
+  }
+
+  .welcome p {
+    font-size: 0.7em;
   }
 
   p {
@@ -304,7 +318,7 @@ browse.html
   background-color: rgb(0, 0, 0, 0.5);
   backdrop-filter: blur(3px);
   border-radius: 10px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   display: grid;
 }
 
@@ -376,14 +390,14 @@ about.html
 .about__meat {
   display: flex;
   flex-wrap: wrap;
-  margin: 30px 70px 0px 70px;
+  margin: 30px 70px 30px 70px;
 }
 
 .about__texts {
   display: flex;
   flex-direction: column;
   gap: 5%;
-  padding: 30px;
+  padding: 30px 130px;
   /* border-radius: 10px 10px 10px 10px; */
   background-color: rgba(221, 221, 221, 0.1);
   backdrop-filter: blur(3px);
@@ -418,11 +432,14 @@ about.html
   .about__texts {
     font-size: 14px;
   }
+  .about__texts {
+    padding: 30px;
+  }
 }
 
 @media (max-width: 500px) {
-  .about__texts {
-    font-size: 12px;
+  .about__texts p {
+    font-size: 0.7em;
   }
 
   .rainyworkers {
@@ -439,14 +456,12 @@ about.html
 contact.html
 --*/
 .contact-info {
-  /* border: 1px solid white; */
   display: flex;
-  width: 100%;
   flex-direction: row;
   justify-content: center;
   background-color: rgba(221, 221, 221, 0.1);
   padding: 20px 0;
-  margin-top: 20px;
+  margin: 20px 70px;
 }
 
 .contact__child {
@@ -461,7 +476,6 @@ contact.html
 
 form {
   color: #ddd;
-  border: 1px solid white;
   margin-right: 20px;
 }
 
@@ -472,9 +486,8 @@ form fieldset {
 
 .gmaps {
   display: block;
-  width: 70%;
+  width: 90%;
   margin: auto;
-  /* border: 1px solid white; */
 }
 
 .contact__child h1 {
@@ -515,7 +528,7 @@ form fieldset {
   .contact__child-gmaps {
     display: flex;
     justify-content: center;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     width: 200px;
     flex-direction: row;
     align-self: center;
