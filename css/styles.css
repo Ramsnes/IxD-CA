@@ -57,6 +57,10 @@ footer a {
   text-transform: uppercase;
 }
 
+ul {
+  list-style: none;
+}
+
 .cart {
   width: 60%;
   display: block;
@@ -220,11 +224,40 @@ h2 {
 /*--
 index.html
 --*/
+
+.threepics {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 80px 20px 0 20px;
+  gap: 5%;
+}
+
+.threepics img {
+  width: 100%;
+  border-radius: 1px;
+}
+
 .biglogodiv {
   margin-top: 80px;
 }
 
 @media (max-width: 1000px) {
+  .threepics {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto auto auto;
+  }
+
+  .threepics img {
+    display: flex;
+    width: 70%;
+    margin: 20px auto;
+    border: 1px solid white;
+  }
+
   .pics {
     align-items: center;
   }
@@ -242,6 +275,11 @@ index.html
   .threepics {
     justify-content: flex-end;
   }
+
+  .threepics img {
+    width: 50%;
+  }
+
   p {
     font-size: 0.7em;
   }
@@ -266,12 +304,8 @@ browse.html
   background-color: rgb(0, 0, 0, 0.5);
   backdrop-filter: blur(3px);
   border-radius: 10px;
-
   grid-template-columns: repeat(4, 1fr);
   display: grid;
-}
-
-.alljackets li {
 }
 
 .alljackets li div {
@@ -284,6 +318,7 @@ browse.html
 .alljackets img {
   width: 150px;
   border-radius: 15px;
+  margin-top: 20px;
 }
 
 .text-jackets {
@@ -326,8 +361,8 @@ browse.html
 }
 
 @media (max-width: 500px) {
-  .alljackets {
-    width: 30%;
+  .alljackets img {
+    width: 120px;
   }
   .jacket {
     min-width: 90px;

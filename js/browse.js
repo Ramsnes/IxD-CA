@@ -32,7 +32,7 @@ async function renderHTML() {
     productElement.id = element.id;
 
     const productContent = `
-      <div>
+      <div class="content">
         <h2>${element.title}</h2>
         <p>${element.description}</p>
         <img src="${element.image}" alt="#" />
