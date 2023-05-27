@@ -47,6 +47,38 @@ async function renderHTML() {
     const sizes = document.getElementById("sizes");
     sizes.innerHTML = "Sizes available: " + product.sizes;
 
+    //cart code
+    const addToCartButton = document.getElementById("addToCartButton");
+    addToCartButton.addEventListener("click", addToCart);
+
+    function addToCart() {
+      // Get the product data from the page
+      const id = getProductId();
+      const title = product.title;
+      const price = product.price;
+      const image = product.image;
+
+      // Create a cart item object
+      const cartItem = {
+        id,
+        title,
+        price,
+        image,
+      };
+
+      // Check if the cart exists in local storage
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // Add the item to the cart
+      cart.push(cartItem);
+
+      // Save the updated cart back to local storage
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      // Provide visual feedback to the user
+      alert("Product added to cart!");
+    }
+
     // console.log(product);
   } catch (error) {
     errorMsg.innerHTML = `<div class ="error"> There was an error. Contact online support at 555-444-333.<div>
