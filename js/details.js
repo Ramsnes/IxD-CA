@@ -2,19 +2,12 @@ const baseUrl = "https://api.noroff.dev/api/v1";
 const errorMsg = document.querySelector(".loadingClass");
 
 function getProductId() {
-  // given this url: localhost:3000/details.html?id=MY_ID
-
-  // Get the search params from the URL
   const searchParams = new URLSearchParams(window.location.search);
-
-  // Get the value of the "id" parameter
   const id = searchParams.get("id");
-
   return id;
 }
 
 async function fetchProduct(id) {
-  // needs to be async since we can't wait for result before code moves on
   const response = await fetch(baseUrl + `/rainy-days/${id}`);
   const data = await response.json();
   return data;
@@ -47,11 +40,13 @@ async function renderHTML() {
     const sizes = document.getElementById("sizes");
     sizes.innerHTML = "Sizes available: " + product.sizes;
 
-    //cart code
+    // cart code
     const addToCartButton = document.getElementById("addToCartButton");
     addToCartButton.addEventListener("click", addToCart);
 
-    function addToCart() {
+    function addToCart(event) {
+      event.preventDefault();
+
       // Get the product data from the page
       const id = getProductId();
       const title = product.title;
@@ -76,16 +71,28 @@ async function renderHTML() {
       localStorage.setItem("cart", JSON.stringify(cart));
 
       // Provide visual feedback to the user
-      alert("Product added to cart!");
-    }
+      const notification = document.createElement("div");
+      notification.classList.add("notification", "hide"); // Add "hide" class to hide initially
+      notification.textContent = "Product added to cart!";
+      document.body.appendChild(notification);
 
-    // console.log(product);
+      // Trigger reflow to enable CSS animation
+      void notification.offsetWidth;
+
+      // Show the notification
+      notification.classList.remove("hide");
+
+      // Remove the notification after a certain duration (e.g., 3 seconds)
+      setTimeout(function () {
+        notification.classList.add("hide");
+        setTimeout(function () {
+          notification.remove();
+        }, 300);
+      }, 2000);
+    }
   } catch (error) {
-    errorMsg.innerHTML = `<div class ="error"> There was an error. Contact online support at 555-444-333.<div>
-        `;
-    // console.log("Please check details.js code for fixing");
-  } finally {
-    // console.log("try catch error has been handled");
+    errorMsg.innerHTML =
+      '<div class="error">There was an error. Contact online support at 555-444-333.</div>';
   }
 }
 

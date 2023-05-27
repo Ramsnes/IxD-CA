@@ -22,6 +22,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="This is your cart page" />
     <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/cart.css" rel="stylesheet" />
+    <!-- External CSS file -->
     <title>Rainydays | Cart</title>
   </head>
 
@@ -53,33 +55,22 @@
     </div>
 
     <main>
-      <div class="cart-redline">
-        <h1>x1 Redline added to cart!</h1>
-        <div class="cart-img-parent">
-          <img
-            class="cart-redline-img"
-            src="/assets/RainyDays_Jacket3.png"
-            alt="Red jacket named Redline"
-          />
+      <div id="cartItems"></div>
+
+      <div id="emptyCartMessage">
+        <p>The cart is empty.</p>
+      </div>
+
+      <div id="cartButtons" style="display: none">
+        <div>
+          <a class="cta-shop-more" href="/browse.html">
+            <button>Shop more</button>
+          </a>
         </div>
-        <div class="cart-info-p">
-          <p>
-            Press the 'Pay'-button for shipping information based on your
-            address and country of recievers address
-          </p>
-          <p>In total = 15.99£</p>
-        </div>
-        <div class="cart-buttons">
-          <div>
-            <a class="cta-shop-more" href="/browse.html"
-              ><button>Shop more</button></a
-            >
-          </div>
-          <div>
-            <a class="pay-cta" href="/checkout.html"
-              ><button>Checkout</button></a
-            >
-          </div>
+        <div>
+          <a class="pay-cta" href="/checkout.html">
+            <button>Checkout</button>
+          </a>
         </div>
       </div>
     </main>
@@ -99,5 +90,6 @@
       </div>
     </footer>
     <div class="copyright">Copyright Rainydays LLC &copy;</div>
+    <script src="js/cart.js"></script>
   </body>
 </html>
