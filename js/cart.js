@@ -15,9 +15,14 @@ function fetchCartItems() {
   if (cart.length === 0) {
     emptyCartMessage.style.display = "block";
     cartButtons.style.display = "none";
+    cartItems.style.display = "none"; // Hide the cartItems element
   } else {
     emptyCartMessage.style.display = "none";
-    cartButtons.style.display = "block";
+    cartButtons.style.display = "flex";
+    cartItems.style.display = "flex";
+
+    // Calculate the total price
+    let totalPrice = 0;
 
     // Render each cart item
     cart.forEach((item) => {
@@ -28,22 +33,35 @@ function fetchCartItems() {
       title.textContent = item.title;
       cartItem.appendChild(title);
 
-      const price = document.createElement("p");
-      price.textContent = "Price: " + item.price;
-      cartItem.appendChild(price);
+      const priceElement = document.createElement("p");
+      const itemPrice = parseFloat(item.price);
 
-      const image = document.createElement("img");
-      image.src = item.image;
-      image.alt = item.title;
-      cartItem.appendChild(image);
+      // Check if the parsed itemPrice is a valid number
+      if (!isNaN(itemPrice)) {
+        priceElement.textContent = itemPrice.toFixed(2);
+        totalPrice += itemPrice;
+      } else {
+        priceElement.textContent = "Invalid Price";
+      }
+
+      cartItem.appendChild(priceElement);
+
+      const imageElement = document.createElement("img");
+      imageElement.src = item.image;
+      imageElement.alt = item.title;
 
       const removeButton = document.createElement("button");
       removeButton.textContent = "Remove";
       removeButton.addEventListener("click", () => removeFromCart(item.id));
+
+      cartItem.appendChild(imageElement);
       cartItem.appendChild(removeButton);
 
       cartItems.appendChild(cartItem);
     });
+
+    // Update the checkout page with the cart items and total price
+    updateCheckoutPage(cart, totalPrice);
   }
 }
 
@@ -60,6 +78,17 @@ function removeFromCart(itemId) {
 
   // Fetch and render the updated cart items
   fetchCartItems();
+}
+
+// Update the checkout page with the cart items and total price
+function updateCheckoutPage(cart, totalPrice) {
+  // Update the cart items display (e.g., updating the DOM elements)
+
+  // Update the total price element
+  const totalPriceElement = document.getElementById("totalPrice");
+  totalPriceElement.textContent = isNaN(totalPrice)
+    ? "Invalid Total Price"
+    : totalPrice.toFixed(2);
 }
 
 // Call the fetchCartItems function to populate the cart and handle empty cart message

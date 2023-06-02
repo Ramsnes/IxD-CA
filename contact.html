@@ -68,7 +68,9 @@
             />
           </div>
           <div class="contact__child">
-            <form>
+            <div id="error"></div>
+
+            <form id="form">
               <fieldset>
                 <legend>Contact Rainydays</legend>
                 <div>
@@ -104,12 +106,13 @@
                   ></textarea>
                 </div>
               </fieldset>
+              <button id="formButton" type="submit">Submit</button>
             </form>
             <!--
             -->
-            <div class="button-wrapper">
+            <!-- <div class="button-wrapper">
               <input type="submit" value="Submit form" class="cta" />
-            </div>
+            </div> -->
             <!--
             -->
           </div>
@@ -132,5 +135,6 @@
       </div>
     </footer>
     <div class="copyright">Copyright Rainydays LLC &copy;</div>
+    <script src="/js/contactForm.js"></script>
   </body>
 </html>
