@@ -51,6 +51,9 @@ function updateCheckoutPage(cart) {
   orderText.appendChild(totalPrice);
 
   orderSummary.appendChild(orderText);
+
+  // Store the cart items in session storage
+  sessionStorage.setItem("checkoutItems", JSON.stringify(cart));
 }
 
 // Calculate the total amount to pay
