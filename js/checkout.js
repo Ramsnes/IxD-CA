@@ -13,7 +13,6 @@ if (isCartAvailable === "true") {
 // Update the checkout page with the cart items
 function updateCheckoutPage(cart) {
   const orderSummary = document.getElementById("orderSummary");
-  const totalAmount = calculateTotalAmount(cart);
 
   // Clear the orderSummary element
   orderSummary.innerHTML = "";
@@ -32,7 +31,8 @@ function updateCheckoutPage(cart) {
   // Create a list of cart items
   cart.forEach((item) => {
     const itemLine = document.createElement("p");
-    itemLine.textContent = `x${item.quantity} ${item.title} (${item.price})`;
+    const quantity = item.quantity ? `x${item.quantity}` : "";
+    itemLine.textContent = `${quantity} ${item.title} (${item.price})`;
 
     const itemImage = document.createElement("img");
     itemImage.src = item.image;
@@ -42,27 +42,8 @@ function updateCheckoutPage(cart) {
     orderText.appendChild(itemImage);
   });
 
-  const totalLine = document.createElement("p");
-  totalLine.textContent = "Total to pay:";
-  const totalPrice = document.createElement("p");
-  totalPrice.textContent = `€${totalAmount.toFixed(2)}`;
-
-  orderText.appendChild(totalLine);
-  orderText.appendChild(totalPrice);
-
   orderSummary.appendChild(orderText);
 
   // Store the cart items in session storage
   sessionStorage.setItem("checkoutItems", JSON.stringify(cart));
-}
-
-// Calculate the total amount to pay
-function calculateTotalAmount(cart) {
-  let totalAmount = 0;
-
-  cart.forEach((item) => {
-    totalAmount += item.price * item.quantity;
-  });
-
-  return totalAmount;
 }

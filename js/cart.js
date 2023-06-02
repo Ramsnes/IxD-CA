@@ -52,6 +52,8 @@ function fetchCartItems() {
 
       const removeButton = document.createElement("button");
       removeButton.textContent = "Remove";
+
+      // Pass the item.id as an argument to removeFromCart function
       removeButton.addEventListener("click", () => removeFromCart(item.id));
 
       cartItem.appendChild(imageElement);
